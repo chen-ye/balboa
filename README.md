@@ -1,7 +1,7 @@
 balboa
 ======
 
-BALBOA is perhaps the best set of tools to interact with phage genome data.   MADE IN USA
+BALBOA is perhaps the greatest set of tools to interact with phage genome data.   MADE IN USA
 
 phage hunters is the shittt
 
