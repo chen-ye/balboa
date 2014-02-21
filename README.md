@@ -1,13 +1,21 @@
 balboa
 ======
 
-BALBOA is perhaps the greatest set of tools to interact with phage genome data.   MADE IN USA
+perhaps the greatest set of phage genome data tools.   
 
-phage hunters is the shittt
+DIRECTORIES
+blast contains results of crispr sequences blasted against phage data from phagesdb
+fasta contains fasta files of all phages in phagesdb (http://phagesdb.org/)
+fastaDownloader is the python script we use to download phagesdb fastas
+mycobacteria_data contains spacer sequences for all mycobacteria, source: crisprdb (http://crispr.u-psud.fr/)
 
 
-Relevant data:
+FURTHER LINKS
 http://phagesdb.org/data/
 http://phagesdb.org/data/?set=seq&type=simple
 
 http://phagesdb.org/media/fastas/Zeuska.fasta
+
+created by Chen Ye, Eddie Williams, Bailey Layzer, and Benjamin Siranosian
+for Phage Hunters 2014 special data project
+MADE IN USA
