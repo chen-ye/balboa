@@ -7,7 +7,9 @@ directories
 -----------
 - *blast* contains results of crispr sequences blasted against phage data from phagesdb
 
-- *fasta* contains fasta files of all phages in phagesdb (http://phagesdb.org/)
+- *phage* contains data for all sequenced phages in phagesdb (http://phagesdb.org/)
+
+	- *fasta* contains fasta files of all phages in phagesdb (http://phagesdb.org/)
 
 - *fastaDownloader* is the python script we use to download phagesdb fastas
 
