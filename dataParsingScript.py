@@ -1,4 +1,5 @@
 import csv
+import os.path
 from Bio import SeqIO
 from Bio.Blast import NCBIWWW
 
@@ -29,13 +30,24 @@ with open('blast/blast_all_filtered.csv', 'rb') as datafile:
 			else:
 				gene = sequence[stopcodon:startcodon]
 
-			print 'gene sequence: ' + gene
-			print 'BLASTing at NCBI database'
-			#blasting
-			result_handle = NCBIWWW.qblast("blastn", "nt", gene)
+			if not gene:
+				print "gene sequence empty"
+			else:
+				print 'gene sequence: ' + gene
 
-			save_file = open('NCBI BLAST results/' + sequencename + " " + phagename + '.xml', 'w')
-			save_file.write(result_handle.read())
-			save_file.close()
-			result_handle.close()
-			print "successfully wrote results to file"
+				outputfilelocation = 'NCBI BLAST results/' + sequencename[:50] + " " + phagename + '.xml'
+
+				isFile = os.path.isfile(outputfilelocation)
+
+				if not isFile:
+					print 'BLASTing at NCBI database'
+					#blasting
+					result_handle = NCBIWWW.qblast("blastn", "nt", gene)
+
+					save_file = open(outputfilelocation, 'w')
+					save_file.write(result_handle.read())
+					save_file.close()
+					result_handle.close()
+					print 'successfully wrote results to file'
+				else:
+					print 'file already exists'
