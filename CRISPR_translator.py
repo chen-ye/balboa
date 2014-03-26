@@ -145,10 +145,8 @@ with open('blast/blast_all_filtered.csv', 'r') as datafile:
 
 				dataArray.append([sequencename, filename, cluster, gene, startcodon, stopcodon, deltaN, PAM, proteinRF1, proteinRF2, proteinRF3, proteinRF4, proteinRF5, proteinRF6])
 
-for dataRow in dataArray:
-	print dataRow
-
 #writes to data file:
+#probably not the most efficient way to do it, I could write the row to the CSV file as it is created
 
 fileName = 'proteinInfoNotBLASTED.csv'
 
@@ -161,3 +159,28 @@ with open(fileName, 'wb') as f:
 
 #protein blasts each protein:
 #output file format: CRISPR sequence name, phage of origin, PAM, refrence frame
+
+
+for dataRow in dataArray[1:]:
+	for x in range (8, 13):
+		proteinSequence = dataRow[x]
+		#truncates CRISPR name. Can occasionally cause a file name too long error. 
+		outputfilelocation = "PBLAST results/" + dataRow[0][:50] + " " + dataRow[1] + " " + str(dataRow[7]) + " "  + str(x - 7) + ".xml"
+
+
+		isFile = os.path.isfile(outputfilelocation)
+
+		if not isFile:
+			print 'PBLASTing at NCBI database \nCRISPR Name: ' + dataRow[0] + ' from phage ' + dataRow[1] + ' protein in RF' + str(x-7)
+			#blasting
+			result_handle = NCBIWWW.qblast("blastp", "p" , proteinSequence)
+
+			save_file = open(outputfilelocation, 'w')
+			save_file.write(result_handle.read())
+			save_file.close()
+			result_handle.close()
+			print 'successfully wrote results to file: ' + outputfilelocation
+		else:
+			print 'file already exists'
+		
+
