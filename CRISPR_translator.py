@@ -162,7 +162,7 @@ with open(fileName, 'wb') as f:
 
 
 for dataRow in dataArray[1:]:
-	for x in range (8, 13):
+	for x in range (8, 14):
 		proteinSequence = dataRow[x]
 		#truncates CRISPR name. Can occasionally cause a file name too long error. 
 		outputfilelocation = "PBLAST results/" + dataRow[0][:50] + " " + dataRow[1] + " " + str(dataRow[7]) + " "  + str(x - 7) + ".xml"
