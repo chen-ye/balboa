@@ -173,7 +173,7 @@ for dataRow in dataArray[1:]:
 		if not isFile:
 			print 'PBLASTing at NCBI database \nCRISPR Name: ' + dataRow[0] + ' from phage ' + dataRow[1] + ' protein in RF' + str(x-7)
 			#blasting
-			result_handle = NCBIWWW.qblast("blastp", "p" , proteinSequence)
+			result_handle = NCBIWWW.qblast("blastp", "nr" , proteinSequence)
 
 			save_file = open(outputfilelocation, 'w')
 			save_file.write(result_handle.read())
